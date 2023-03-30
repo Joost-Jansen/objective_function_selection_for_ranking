@@ -73,3 +73,7 @@ allrank/config.json
 task-data
 dummy_data
 
+datasets/MQ2008
+datasets/MSLR-WEB10K
+
+test_run

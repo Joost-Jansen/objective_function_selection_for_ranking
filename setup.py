@@ -12,12 +12,12 @@ reqs = [
     "scikit-learn>=0.23.0",
     "pandas>=1.0.5",
     "numpy>=1.18.5",
-    "scipy>=1.4.1",
+    "scipy>=1.4",
     "attrs>=19.3.0",
     "flatten_dict>=0.3.0",
     "tensorboardX>=2.1.0",
     "gcsfs==0.6.2",
-    "google-auth==1.27.1"
+    "google-auth>=2.15.0"
 ]
 
 setup(
