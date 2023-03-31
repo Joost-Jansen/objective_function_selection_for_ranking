@@ -21,7 +21,7 @@
     }
   },
   "data": {
-    "path": "datasets/MQ2008/MQ2008/Fold1",
+    "path": "datasets/MQ2008/Fold1",
     "validation_ds_role": "vali",
     "num_workers": 1,
     "batch_size": 64,
@@ -57,7 +57,7 @@
     }
   },
   "val_metric": "ndcg_5",
-  "detect_anomaly": true,
+  "detect_anomaly": false,
   "expected_metrics": {
     "val": {
       "ndcg_5": 0.50
