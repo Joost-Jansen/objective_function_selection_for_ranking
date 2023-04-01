@@ -12,14 +12,14 @@ def getPercentageOfData(file, percentage):
 
 
 if __name__ == "__main__":
-    folders = ["./MQ2008/Fold1", "./MSLR-WEB10K/Fold1"]
+    folders = ["datasets/MQ2008/Fold1", "datasets/MSLR-WEB10K/Fold1"]
     files = ["test.txt", "train.txt", "vali.txt"]
     percentages = [0.5, 0.6, 0.7, 0.8]
 
     for folder in folders:
         for percentage in percentages:
-            if not os.path.exists(folder+ "_percentage_" + str(percentage*100)):
-                os.mkdir(folder+ "_percentage_" + str(percentage*100))
+            if not os.path.exists(folder+ "_percentage_" + str(int(percentage*100))):
+                os.mkdir(folder+ "_percentage_" + str(int(percentage*100)))
             for file in files:
                 df_train, df_test = getPercentageOfData(folder + "/" + file, (1-percentage))
-                df_train.to_csv(folder+ "_percentage_" + str(percentage*100) +  "/" + file , index=False)
+                df_train.to_csv(folder+ "_percentage_" + str(int(percentage*100)) +  "/" + file , index=False)

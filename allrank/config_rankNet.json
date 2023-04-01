@@ -56,7 +56,7 @@
     }
   },
   "val_metric": "ndcg_5",
-  "detect_anomaly": true,
+  "detect_anomaly": false,
   "expected_metrics": {
     "val": {
       "ndcg_5": 0.50
