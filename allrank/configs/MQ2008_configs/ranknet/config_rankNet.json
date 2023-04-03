@@ -2,7 +2,7 @@
   "model": {
     "fc_model": {
       "sizes": [
-        64
+        128
       ],
       "input_norm": false,
       "activation": null,
@@ -10,7 +10,7 @@
     },
     "transformer": {
       "N": 4,
-      "d_ff": 64,
+      "d_ff": 512,
       "h": 4,
       "positional_encoding": null,
       "dropout": 0.3
