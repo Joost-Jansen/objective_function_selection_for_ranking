@@ -1,12 +1,12 @@
 .PHONY: ci
 ci: lint tests wheel egg
 
-# .PHONY: lint
-# lint:
+.PHONY: lint
+lint:
 # 	flake8 allrank
-# 	flake8 tests
-# 	mypy allrank --ignore-missing-imports  --check-untyped-defs
-# 	mypy tests --ignore-missing-imports --check-untyped-defs
+	flake8 tests
+	mypy allrank --ignore-missing-imports  --check-untyped-defs
+	mypy tests --ignore-missing-imports --check-untyped-defs
 
 .PHONY: install-reqs
 install-reqs:
