@@ -96,7 +96,7 @@ def run(paths, logger, args, percentage):
 
 
 if __name__ == "__main__":
-    percentages = [50, 60, 70, 80]
+    percentages = [20, 40, 60, 80,100]
 
 
     args = parse_args()
