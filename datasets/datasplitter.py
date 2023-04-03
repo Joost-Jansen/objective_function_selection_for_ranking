@@ -6,6 +6,8 @@ import os
 def getPercentageOfData(file, percentage):
     df = pd.read_csv(file)
     df = df.sample(frac=1).reset_index(drop=True)
+    if "test" in file or percentage == 0:
+        return df, df
     df_train, df_test = train_test_split(df, test_size=percentage)
     return df_train, df_test
 
@@ -14,7 +16,7 @@ def getPercentageOfData(file, percentage):
 if __name__ == "__main__":
     folders = ["datasets/MQ2008/Fold1", "datasets/MSLR-WEB10K/Fold1"]
     files = ["test.txt", "train.txt", "vali.txt"]
-    percentages = [0.5, 0.6, 0.7, 0.8]
+    percentages = [0.2, 0.4, 0.6, 0.8, 1.0]
 
     for folder in folders:
         for percentage in percentages:

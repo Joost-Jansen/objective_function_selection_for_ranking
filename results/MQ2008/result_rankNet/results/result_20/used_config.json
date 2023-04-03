@@ -1,0 +1,65 @@
+{
+  "model": {
+    "fc_model": {
+      "sizes": [
+        64
+      ],
+      "input_norm": false,
+      "activation": null,
+      "dropout": 0.3
+    },
+    "transformer": {
+      "N": 4,
+      "d_ff": 64,
+      "h": 4,
+      "positional_encoding": null,
+      "dropout": 0.3
+    },
+    "post_model": {
+      "output_activation": "Sigmoid",
+      "d_output": 4
+    }
+  },
+  "data": {
+    "path": "datasets/MQ2008/Fold1",
+    "validation_ds_role": "vali",
+    "num_workers": 1,
+    "batch_size": 64,
+    "slate_length": 240
+  },
+  "optimizer": {
+    "name": "Adam",
+    "args": {
+      "lr": 0.001
+    }
+  },
+  "lr_scheduler": {
+    "name": "StepLR",
+    "args": {
+      "step_size": 3,
+      "gamma": 0.5
+    }
+  },
+  "training": {
+    "epochs": 4,
+    "early_stopping_patience": 100,
+    "gradient_clipping_norm": null
+  },
+  "metrics": [
+    "ndcg_5"
+  ],
+  "loss": {
+    "name": "rankNet",
+    "args": {
+      "weight_by_diff": true,
+      "weight_by_diff_powed": false
+    }
+  },
+  "val_metric": "ndcg_5",
+  "detect_anomaly": false,
+  "expected_metrics": {
+    "val": {
+      "ndcg_5": 0.50
+    }
+  }
+}
