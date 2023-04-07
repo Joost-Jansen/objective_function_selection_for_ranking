@@ -20,7 +20,7 @@ def change_parameters(dataset_name):
                 data = json.load(f)
 
             # For MSLR change slate and metrics
-            # data['data']['slate_length'] = 100
+            data['training']['epochs'] = 10
             # data['metrics'] = [
             #     "ndcg_10",
             #     "ndcg_50",
@@ -43,7 +43,7 @@ def change_parameters(dataset_name):
             # }
 
             # for MSLP, change dataset name
-            data['data']['path'] = "datasets/MSLR-WEB10K/Fold1_percentage" + ratio
+            # data['data']['path'] = "datasets/MSLR-WEB10K/Fold1_percentage" + ratio
             # Save the modified JSON data to the file
             with open(folder_path, 'w') as f:
                 json.dump(data, f, indent=4)
