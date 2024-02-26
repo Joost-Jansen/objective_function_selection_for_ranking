@@ -1,8 +1,8 @@
-# Extending allRank: Enhancing Robustness in LTR with Limited Data
+# Enhancing Robustness in LTR with Limited Data
 
 ## About
 
-Building on the foundation of allRank, our extension integrates findings from our research paper, "Exploring the Impact of Objective Function Selection on Robustness for Ranking Tasks with Limited Training Data". We extend allRank's capabilities to better handle scenarios with limited training data, focusing on the robustness of various objective functions, including Pointwise, RankNet, ApproxNDCG, and NeuralNDCG. Our experiments, conducted on the MQ2008 and MSLR-WEB10K datasets, showcase the importance of selecting the right objective function to improve model performance in data-constrained environments.
+Building on the foundation of allRank, our extension integrates findings from our research paper, "Exploring the Impact of Objective Function Selection on Robustness for Ranking Tasks with Limited Training Data". We analysed allRank's capabilities to better handle scenarios with limited training data, focusing on the robustness of various objective functions, including Pointwise, RankNet, ApproxNDCG, and NeuralNDCG. Our experiments, conducted on the MQ2008 and MSLR-WEB10K datasets, showcase the importance of selecting the right objective function to improve model performance in data-constrained environments.
 
 ## Highlights
 
@@ -22,7 +22,7 @@ Leverage our added functionalities to allRank for experimenting with limited tra
 
 ## Research Impact
 
-Our work contributes to the understanding of LTR model robustness in scenarios with restricted data availability. By integrating our findings into allRank, we aim to support both the research community and industry practitioners in developing more resilient LTR models.
+Our work contributes to the understanding of LTR model robustness in scenarios with restricted data availability. We aim to support both the research community and industry practitioners in developing more resilient LTR models.
 
 ## Citation
 
