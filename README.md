@@ -1,91 +1,42 @@
-# allRank : Learning to Rank in PyTorch
-
-## dataset
-
-MQ2008: https://onedrive.live.com/?authkey=%21ACnoZZSZVfHPJd0&cid=8FEADC23D838BDA8&id=8FEADC23D838BDA8%21114&parId=8FEADC23D838BDA8%21107&o=OneUp
-
-MSLR-WEB10k: https://onedrive.live.com/?authkey=%21AOIoJ6Ks0bEMp78&id=275FE633657D0CDB%21108&cid=275FE633657D0CDB&parId=root&parQt=sharedby&parCid=C7FDB311DB3EB77B&o=OneUp
+# Extending allRank: Enhancing Robustness in LTR with Limited Data
 
 ## About
 
-allRank is a PyTorch-based framework for training neural Learning-to-Rank (LTR) models, featuring implementations of:
-* common pointwise, pairwise and listwise loss functions
-* fully connected and Transformer-like scoring functions
-* commonly used evaluation metrics like Normalized Discounted Cumulative Gain (NDCG) and Mean Reciprocal Rank (MRR)
-* click-models for experiments on simulated click-through data
+Building on the foundation of allRank, our extension integrates findings from our research paper, "Exploring the Impact of Objective Function Selection on Robustness for Ranking Tasks with Limited Training Data". We extend allRank's capabilities to better handle scenarios with limited training data, focusing on the robustness of various objective functions, including Pointwise, RankNet, ApproxNDCG, and NeuralNDCG. Our experiments, conducted on the MQ2008 and MSLR-WEB10K datasets, showcase the importance of selecting the right objective function to improve model performance in data-constrained environments.
 
-### Motivation
+## Highlights
 
-allRank provides an easy and flexible way to experiment with various LTR neural network models and loss functions.
-It is easy to add a custom loss, and to configure the model and the training procedure. 
-We hope that allRank will facilitate both research in neural LTR and its industrial applications.
+- **Objective Functions Analysis**: In-depth examination of Pointwise, RankNet, ApproxNDCG, and NeuralNDCG under limited training data scenarios.
+- **Dataset Utilization**: Utilized MQ2008 and MSLR-WEB10K datasets to benchmark the performance of different objective functions.
+- **Experimental Insights**: Found ApproxNDCG and NeuralNDCG to be particularly effective in different settings, influencing future LTR model training strategies.
 
-## Features
+## Getting Started
 
-### Implemented loss functions:
- 1. ListNet (for binary and graded relevance)
- 2. ListMLE
- 3. RankNet
- 4. Ordinal loss
- 5. LambdaRank
- 6. LambdaLoss
- 7. ApproxNDCG
- 8. RMSE
- 9. NeuralNDCG (introduced in https://arxiv.org/pdf/2102.07831)
+To replicate our research findings or experiment with your own data under similar constraints, follow the original allRank setup instructions. Use our enhanced configuration options to select the appropriate objective function based on your dataset's size and complexity.
 
-### Getting started guide
+## Customization
 
-To help you get started, we provide a ```run_example.sh``` script which generates dummy ranking data in libsvm format and trains
- a Transformer model on the data using provided example ```config.json``` config file. Once you run the script, the dummy data can be found in `dummy_data` directory
- and the results of the experiment in `test_run` directory. To run the example, Docker is required.
+Leverage our added functionalities to allRank for experimenting with limited training data:
+- **Configurable Objective Functions**: Easily switch between different objective functions to find the most suitable for your dataset.
+- **Detailed Experimentation Guide**: Follow our comprehensive guide to conduct experiments that mimic our research setup, allowing for direct comparison and replication of results.
 
-### Configuring your model & training
+## Research Impact
 
-To train your own model, configure your experiment in ```config.json``` file and run  
+Our work contributes to the understanding of LTR model robustness in scenarios with restricted data availability. By integrating our findings into allRank, we aim to support both the research community and industry practitioners in developing more resilient LTR models.
 
-```python allrank/main.py --config_file_name allrank/config.json --run_id <the_name_of_your_experiment> --job_dir <the_place_to_save_results>```
+## Citation
 
-All the hyperparameters of the training procedure: i.e. model defintion, data location, loss and metrics used, training hyperparametrs etc. are controlled
-by the ```config.json``` file. We provide a template file ```config_template.json``` where supported attributes, their meaning and possible values are explained.
- Note that following MSLR-WEB30K convention, your libsvm file with training data should be named `train.txt`. You can specify the name of the validation dataset 
- (eg. valid or test) in the config. Results will be saved under the path ```<job_dir>/results/<run_id>```
- 
-Google Cloud Storage is supported in allRank as a place for data and job results.
-
-
-### Implementing custom loss functions
-
-To experiment with your own custom loss, you need to implement a function that takes two tensors (model prediction and ground truth) as input
- and put it in the `losses` package, making sure it is exposed on a package level.
-To use it in training, simply pass the name (and args, if your loss method has some hyperparameters) of your function in the correct place in the config file:
-
+Please cite our paper if you use our extension in your research:
 ```
-"loss": {
-    "name": "yourLoss",
-    "args": {
-        "arg1": val1,
-        "arg2: val2
-    }
-  }
+@article{Hellinga2023ObjectiveFunctionLTR,
+  title={Exploring the Impact of Objective Function Selection on Robustness for Ranking Tasks with Limited Training Data},
+  author={Rixt Hellinga, Joost Jansen, and Yuan Tian},
+  journal={ArXiv},
+  year={2023},
+}
 ```
 
-### Applying click-model
-
-To apply a click model you need to first have an allRank model trained.
-Next, run:
-
-```python allrank/rank_and_click.py --input-model-path <path_to_the_model_weights_file> --roles <comma_separated_list_of_ds_roles_to_process e.g. train,valid> --config_file_name allrank/config.json --run_id <the_name_of_your_experiment> --job_dir <the_place_to_save_results>``` 
-
-The model will be used to rank all slates from the dataset specified in config. Next - a click model configured in config will be applied and the resulting click-through dataset will be written under ```<job_dir>/results/<run_id>``` in a libSVM format.
-The path to the results directory may then be used as an input for another allRank model training.
-
-## Continuous integration
-
-You should run `scripts/ci.sh` to verify that code passes style guidelines and unit tests.
-
-## Research
-
-This framework was developed to support the research project [Context-Aware Learning to Rank with Self-Attention](https://arxiv.org/abs/2005.10084). If you use allRank in your research, please cite:
+Also, continue to cite the allRank framework as per their documentation:
 ```
 @article{Pobrotyn2020ContextAwareLT,
   title={Context-Aware Learning to Rank with Self-Attention},
