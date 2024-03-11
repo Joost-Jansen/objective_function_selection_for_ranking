@@ -2,7 +2,7 @@
 
 ## About
 
-Building on the foundation of allRank, our extension integrates findings from our research paper, "Exploring the Impact of Objective Function Selection on Robustness for Ranking Tasks with Limited Training Data". We analysed allRank's capabilities to better handle scenarios with limited training data, focusing on the robustness of various objective functions, including Pointwise, RankNet, ApproxNDCG, and NeuralNDCG. Our experiments, conducted on the MQ2008 and MSLR-WEB10K datasets, showcase the importance of selecting the right objective function to improve model performance in data-constrained environments.
+Building on the foundation of allRank, our extension integrates findings from our research paper, ["Exploring the Impact of Objective Function Selection on Robustness for Ranking Tasks with Limited Training Data".](Paper.pdf) We analysed allRank's capabilities to better handle scenarios with limited training data, focusing on the robustness of various objective functions, including Pointwise, RankNet, ApproxNDCG, and NeuralNDCG. Our experiments, conducted on the MQ2008 and MSLR-WEB10K datasets, showcase the importance of selecting the right objective function to improve model performance in data-constrained environments.
 
 ## Highlights
 
